@@ -12,7 +12,7 @@ namespace QuanLyBanHang.Control
     class NhanVienCtrl
     {
         private NhanVienMod sql = new NhanVienMod();
-        
+
         public DataSet GetDataSet()
         {
             return sql.GetDataSet();
@@ -21,6 +21,14 @@ namespace QuanLyBanHang.Control
         public void Add(NhanVienObj vo)
         {
             sql.Add(vo);
+        }
+        public void Update(NhanVienObj vo)
+        {
+            sql.Update(vo);
+        }
+        public void Delete(NhanVienObj vo)
+        {
+            sql.Delete(vo);
         }
 
         public void DelAllFrom3()

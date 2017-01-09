@@ -8,7 +8,7 @@ namespace QuanLyBanHang.Object
         string _maNV;
         string _tenNV;
         string _gioiTinh;
-        DateTime _namSinh;
+        string _namSinh;
         string _diaChi;
         string _sDT;
         string _matKhau;
@@ -33,7 +33,7 @@ namespace QuanLyBanHang.Object
             set { _gioiTinh = value; }
         }
 
-        public DateTime NamSinh
+        public string NamSinh
         {
             get { return _namSinh; }
             set { _namSinh = value; }
@@ -59,7 +59,7 @@ namespace QuanLyBanHang.Object
         #endregion
 
         public NhanVienObj() { }
-        public NhanVienObj(string MaNV, string TenNV, string GioiTinh, DateTime NamSinh, string DiaChi, string SDT, string MatKhau)
+        public NhanVienObj(string MaNV, string TenNV, string GioiTinh, string NamSinh, string DiaChi, string SDT, string MatKhau)
         {
             this.MaNV = MaNV;
             this.TenNV = TenNV;

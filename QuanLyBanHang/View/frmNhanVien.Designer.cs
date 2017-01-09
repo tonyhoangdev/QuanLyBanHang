@@ -79,6 +79,7 @@
             // dpNamSinh
             // 
             this.dpNamSinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dpNamSinh.Enabled = false;
             this.dpNamSinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dpNamSinh.Location = new System.Drawing.Point(694, 36);
             this.dpNamSinh.Name = "dpNamSinh";
@@ -87,6 +88,7 @@
             // 
             // cbGioiTinh
             // 
+            this.cbGioiTinh.Enabled = false;
             this.cbGioiTinh.FormattingEnabled = true;
             this.cbGioiTinh.Location = new System.Drawing.Point(123, 75);
             this.cbGioiTinh.Name = "cbGioiTinh";
@@ -97,7 +99,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(594, 74);
+            this.label6.Location = new System.Drawing.Point(594, 79);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 19);
             this.label6.TabIndex = 1;
@@ -106,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(266, 74);
+            this.label4.Location = new System.Drawing.Point(266, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 19);
             this.label4.TabIndex = 1;
@@ -115,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 78);
+            this.label2.Location = new System.Drawing.Point(19, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 19);
             this.label2.TabIndex = 1;
@@ -125,7 +127,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(594, 42);
+            this.label5.Location = new System.Drawing.Point(594, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 19);
             this.label5.TabIndex = 1;
@@ -134,7 +136,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(266, 42);
+            this.label3.Location = new System.Drawing.Point(266, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 19);
             this.label3.TabIndex = 1;
@@ -143,7 +145,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 46);
+            this.label1.Location = new System.Drawing.Point(19, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 19);
             this.label1.TabIndex = 1;
@@ -152,7 +154,8 @@
             // txtSDT
             // 
             this.txtSDT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSDT.Location = new System.Drawing.Point(694, 71);
+            this.txtSDT.Enabled = false;
+            this.txtSDT.Location = new System.Drawing.Point(694, 75);
             this.txtSDT.MaxLength = 11;
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(130, 26);
@@ -164,7 +167,8 @@
             // 
             this.txtDiaChi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDiaChi.Location = new System.Drawing.Point(370, 71);
+            this.txtDiaChi.Enabled = false;
+            this.txtDiaChi.Location = new System.Drawing.Point(370, 75);
             this.txtDiaChi.MaxLength = 50;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(218, 26);
@@ -172,7 +176,10 @@
             // 
             // txtTen
             // 
-            this.txtTen.Location = new System.Drawing.Point(370, 39);
+            this.txtTen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTen.Enabled = false;
+            this.txtTen.Location = new System.Drawing.Point(370, 36);
             this.txtTen.MaxLength = 30;
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(218, 26);
@@ -180,7 +187,8 @@
             // 
             // txtMa
             // 
-            this.txtMa.Location = new System.Drawing.Point(123, 43);
+            this.txtMa.Enabled = false;
+            this.txtMa.Location = new System.Drawing.Point(123, 36);
             this.txtMa.MaxLength = 10;
             this.txtMa.Name = "txtMa";
             this.txtMa.Size = new System.Drawing.Size(121, 26);
@@ -192,9 +200,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dgViewNV);
-            this.groupBox2.Location = new System.Drawing.Point(12, 214);
+            this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(841, 142);
+            this.groupBox2.Size = new System.Drawing.Size(841, 175);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách nhân viên";
@@ -210,16 +218,16 @@
             this.dgViewNV.Location = new System.Drawing.Point(3, 22);
             this.dgViewNV.Name = "dgViewNV";
             this.dgViewNV.ReadOnly = true;
-            this.dgViewNV.Size = new System.Drawing.Size(835, 117);
+            this.dgViewNV.Size = new System.Drawing.Size(835, 150);
             this.dgViewNV.TabIndex = 0;
             // 
             // btnThem
             // 
             this.btnThem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThem.Location = new System.Drawing.Point(173, 137);
+            this.btnThem.Location = new System.Drawing.Point(189, 137);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 71);
+            this.btnThem.Size = new System.Drawing.Size(75, 38);
             this.btnThem.TabIndex = 2;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -229,9 +237,9 @@
             // 
             this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoa.Location = new System.Drawing.Point(285, 137);
+            this.btnXoa.Location = new System.Drawing.Point(301, 137);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 71);
+            this.btnXoa.Size = new System.Drawing.Size(75, 38);
             this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -241,9 +249,9 @@
             // 
             this.btnSua.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSua.Location = new System.Drawing.Point(397, 137);
+            this.btnSua.Location = new System.Drawing.Point(413, 137);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 71);
+            this.btnSua.Size = new System.Drawing.Size(75, 38);
             this.btnSua.TabIndex = 2;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -254,9 +262,9 @@
             this.btnLuu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnLuu.Enabled = false;
             this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Location = new System.Drawing.Point(509, 137);
+            this.btnLuu.Location = new System.Drawing.Point(525, 137);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 71);
+            this.btnLuu.Size = new System.Drawing.Size(75, 38);
             this.btnLuu.TabIndex = 2;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -267,9 +275,9 @@
             this.btnHuy.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnHuy.Enabled = false;
             this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHuy.Location = new System.Drawing.Point(621, 137);
+            this.btnHuy.Location = new System.Drawing.Point(637, 137);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(75, 71);
+            this.btnHuy.Size = new System.Drawing.Size(75, 38);
             this.btnHuy.TabIndex = 2;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;

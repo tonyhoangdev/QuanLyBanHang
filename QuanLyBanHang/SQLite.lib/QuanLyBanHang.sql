@@ -11,7 +11,7 @@ CREATE TABLE `tb_KhachHang` (
     PRIMARY KEY(MaKH)
 );
 CREATE TABLE `tb_NhanVien` (
-    `MaNV`      VARCHAR(10) Not NULL,
+    `MaNV`      VARCHAR(10) NOT NULL,
     `TenNV`     NVARCHAR(30),
     `GioiTinh`  NVARCHAR(5),
     `NamSinh`   DATE,
