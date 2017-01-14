@@ -2,29 +2,30 @@
 
 namespace QuanLyBanHang.Object
 {
-    public class NhanVienObj
+    public class KhachHangObj
     {
         #region Fields
-        string _maNV;
-        string _tenNV;
+        string _maKH;
+        string _tenKH;
         string _gioiTinh;
         string _namSinh;
-        string _diaChi;
         string _sDT;
-        string _matKhau;
+        string _diaChi;
+        int _diem;
+        string _email;
         #endregion
 
         #region Properties
-        public string MaNV
+        public string MaKH
         {
-            get { return _maNV; }
-            set { _maNV = value; }
+            get { return _maKH; }
+            set { _maKH = value; }
         }
 
-        public string TenNV
+        public string TenKH
         {
-            get { return _tenNV; }
-            set { _tenNV = value; }
+            get { return _tenKH; }
+            set { _tenKH = value; }
         }
 
         public string GioiTinh
@@ -39,23 +40,30 @@ namespace QuanLyBanHang.Object
             set { _namSinh = value; }
         }
 
-        public string DiaChi
-        {
-            get { return _diaChi; }
-            set { _diaChi = value; }
-        }
-
         public string SDT
         {
             get { return _sDT; }
             set { _sDT = value; }
         }
 
-        public string MatKhau
+        public string DiaChi
         {
-            get { return _matKhau; }
-            set { _matKhau = value; }
+            get { return _diaChi; }
+            set { _diaChi = value; }
+        }
+
+        public int Diem
+        {
+            get { return _diem; }
+            set { _diem = value; }
+        }
+
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
         }
         #endregion
     }
 }
+

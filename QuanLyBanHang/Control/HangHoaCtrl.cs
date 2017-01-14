@@ -9,24 +9,24 @@ using QuanLyBanHang.Object;
 
 namespace QuanLyBanHang.Control
 {
-    class NhanVienCtrl
+    public class HangHoaCtrl
     {
-        private NhanVienMod sql = new NhanVienMod();
+        private HangHoaMod sql = new HangHoaMod();
 
         public DataSet GetDataSet()
         {
             return sql.GetDataSet();
         }
 
-        public void Add(NhanVienObj vo)
+        public void Add(HangHoaObj vo)
         {
             sql.Add(vo);
         }
-        public void Update(NhanVienObj vo)
+        public void Update(HangHoaObj vo)
         {
             sql.Update(vo);
         }
-        public void Delete(NhanVienObj vo)
+        public void Delete(HangHoaObj vo)
         {
             sql.Delete(vo);
         }
