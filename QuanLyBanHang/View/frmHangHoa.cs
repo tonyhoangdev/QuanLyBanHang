@@ -46,6 +46,7 @@ namespace QuanLyBanHang.View
 
         private void DisEnl(bool e)
         {
+            btnNhapHang.Enabled = !e;
             btnThem.Enabled = !e;
             btnXoa.Enabled = !e;
             btnSua.Enabled = !e;
@@ -59,7 +60,7 @@ namespace QuanLyBanHang.View
 
         private void GanData(HangHoaObj obj)
         {
-            obj.MaHH= txtMa.Text.Trim();
+            obj.MaHH = txtMa.Text.Trim();
             obj.TenHang = txtTen.Text.Trim();
             obj.SoLuong = int.Parse(cbSoLuong.Text.Trim());
             obj.DonGia = int.Parse(txtDonGia.Text.Trim());
@@ -121,11 +122,17 @@ namespace QuanLyBanHang.View
                 hhCtrl.Add(nv);
                 MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+            else if (flagLuu == 1)
             {
                 // sua
                 hhCtrl.Update(nv);
                 MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Nhap
+                hhCtrl.Update(nv);
+                MessageBox.Show("Nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             frmHangHoa_Load(sender, e);
         }
@@ -150,6 +157,21 @@ namespace QuanLyBanHang.View
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnNhapHang_Click(object sender, EventArgs e)
+        {
+            flagLuu = 2;
+            btnNhapHang.Enabled = false;
+            btnThem.Enabled = false;
+            btnXoa.Enabled = false;
+            btnSua.Enabled = false;
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
+            txtMa.Enabled = false;
+            txtTen.Enabled = false;
+            txtDonGia.Enabled = false;
+            cbSoLuong.Enabled = true;
         }
     }
 }

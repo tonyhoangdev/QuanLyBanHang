@@ -45,6 +45,7 @@
             this.txtMa = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnNhapHang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewHH)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,7 +76,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(245, 67);
+            this.label4.Location = new System.Drawing.Point(335, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 1;
@@ -156,7 +157,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(245, 41);
+            this.label3.Location = new System.Drawing.Point(335, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 1;
@@ -176,7 +177,7 @@
             this.txtDonGia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDonGia.Enabled = false;
-            this.txtDonGia.Location = new System.Drawing.Point(325, 63);
+            this.txtDonGia.Location = new System.Drawing.Point(415, 62);
             this.txtDonGia.MaxLength = 50;
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Size = new System.Drawing.Size(158, 20);
@@ -188,7 +189,7 @@
             this.txtTen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTen.Enabled = false;
-            this.txtTen.Location = new System.Drawing.Point(325, 37);
+            this.txtTen.Location = new System.Drawing.Point(415, 36);
             this.txtTen.MaxLength = 30;
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(203, 20);
@@ -220,6 +221,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnNhapHang);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cbSoLuong);
             this.groupBox1.Controls.Add(this.label4);
@@ -239,11 +241,23 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(489, 67);
+            this.label5.Location = new System.Drawing.Point(579, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 3;
             this.label5.Text = "(VND)";
+            // 
+            // btnNhapHang
+            // 
+            this.btnNhapHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNhapHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnNhapHang.Location = new System.Drawing.Point(235, 56);
+            this.btnNhapHang.Name = "btnNhapHang";
+            this.btnNhapHang.Size = new System.Drawing.Size(94, 32);
+            this.btnNhapHang.TabIndex = 4;
+            this.btnNhapHang.Text = "Nhập Hàng";
+            this.btnNhapHang.UseVisualStyleBackColor = true;
+            this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
             // 
             // frmHangHoa
             // 
@@ -287,5 +301,6 @@
         private System.Windows.Forms.TextBox txtMa;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnNhapHang;
     }
 }
