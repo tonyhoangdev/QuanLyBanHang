@@ -20,7 +20,7 @@ namespace QuanLyBanHang.Model
             return da.excuteQuery(cmd);
         }
 
-        public void Add(KhachHangObj vo)
+        public bool Add(KhachHangObj vo)
         {
             string str = "insert into tb_KhachHang (MaKH, TenKH, GioiTinh, NamSinh, DiaChi, SDT, Email, Diem) values (@MaKH, @TenKH, @GioiTinh, @NamSinh, @DiaChi, @SDT, @Email, @Diem)";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
@@ -32,11 +32,11 @@ namespace QuanLyBanHang.Model
             cmd.Parameters.Add("@SDT", SqlDbType.Text).Value = vo.SDT;
             cmd.Parameters.Add("@Email", SqlDbType.Text).Value = vo.Email;
             cmd.Parameters.Add("@Diem", SqlDbType.Int).Value = vo.Diem;
-            da.executeNonQuery(cmd);
+            return da.executeNonQuery(cmd);
         }
 
         // Update du lieu
-        public void Update(KhachHangObj vo)
+        public bool Update(KhachHangObj vo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("update tb_KhachHang ");
@@ -51,30 +51,30 @@ namespace QuanLyBanHang.Model
             cmd.Parameters.Add("@SDT", SqlDbType.Text).Value = vo.SDT;
             cmd.Parameters.Add("@Email", SqlDbType.Text).Value = vo.Email;
             cmd.Parameters.Add("@Diem", SqlDbType.Text).Value = vo.Diem;
-            da.executeNonQuery(cmd);
+            return da.executeNonQuery(cmd);
         }
 
         // Delete du lieu
-        public void Delete(KhachHangObj vo)
+        public bool Delete(KhachHangObj vo)
         {
             string str = "delete from tb_KhachHang where MaKH = @MaKH";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
             cmd.Parameters.Add("@MaKH", SqlDbType.Text).Value = vo.MaKH;
-            da.executeNonQuery(cmd);
+            return da.executeNonQuery(cmd);
         }
 
-        public void DelAllFrom3()
+        public bool DelAllFrom3()
         {
             string str = "delete from mains where id > 2";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
-            da.executeNonQuery(cmd);
+            return da.executeNonQuery(cmd);
         }
 
-        public void CleanUpDatabase()
+        public bool CleanUpDatabase()
         {
             string str = "vacuum;";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
-            da.executeNonQuery(cmd);
+            return da.executeNonQuery(cmd);
         }
 
     }

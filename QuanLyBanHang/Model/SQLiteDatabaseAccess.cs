@@ -75,8 +75,9 @@ namespace QuanLyBanHang.Model
         }
 
         // Run insert, edit, delete command
-        public void executeNonQuery(SQLiteCommand cmd)
+        public bool executeNonQuery(SQLiteCommand cmd)
         {
+            bool retVal = true;
             // Open
             openConnection();
 
@@ -85,13 +86,16 @@ namespace QuanLyBanHang.Model
             {
                 cmd.ExecuteNonQuery();
             }
-            catch (SQLiteException ex)
+            catch
             {
-                Console.WriteLine(ex.Message);
+                retVal = false;
             }
 
             // Close
             closeConnection();
+
+            // Return
+            return retVal;
         }
     }
 }

@@ -114,11 +114,15 @@ namespace QuanLyBanHang.View
             if (dr == DialogResult.Yes)
             {
                 // Xoa
-                nvCtr.Delete(nv);
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
+                if (nvCtr.Delete(nv))
+                {
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             frmNhanVien_Load(sender, e);
         }
@@ -129,14 +133,28 @@ namespace QuanLyBanHang.View
             if (flagLuu == 0)
             {
                 // them
-                nvCtr.Add(nv);
-                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (nvCtr.Add(nv))
+                {
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {
                 // sua
-                nvCtr.Update(nv);
-                MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (nvCtr.Update(nv))
+                {
+                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             frmNhanVien_Load(sender, e);
         }

@@ -49,14 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\ChiTietCtrl.cs" />
+    <Compile Include="Control\HoaDonCtrl.cs" />
     <Compile Include="Control\KhachHangCtrl.cs" />
     <Compile Include="Control\HangHoaCtrl.cs" />
     <Compile Include="Control\NhanVienCtrl.cs" />
+    <Compile Include="Model\ChiTietMod.cs" />
+    <Compile Include="Model\HoaDonMod.cs" />
     <Compile Include="Model\KhachHangMod.cs" />
     <Compile Include="Model\HangHoaMod.cs" />
     <Compile Include="Model\NhanVienMod.cs" />
     <Compile Include="Model\SQLiteDatabaseAccess.cs" />
-    <Compile Include="Object\CTHDObj.cs" />
+    <Compile Include="Object\ChiTietObj.cs" />
     <Compile Include="Object\HangHoaObj.cs" />
     <Compile Include="Object\HoaDonObj.cs" />
     <Compile Include="Object\KhachHangObj.cs" />
@@ -66,6 +70,12 @@
     </Compile>
     <Compile Include="View\frmHangHoa.Designer.cs">
       <DependentUpon>frmHangHoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmHoaDon.Designer.cs">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmMain.cs">
       <SubType>Form</SubType>
@@ -89,6 +99,9 @@
     </Compile>
     <EmbeddedResource Include="View\frmHangHoa.resx">
       <DependentUpon>frmHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmHoaDon.resx">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

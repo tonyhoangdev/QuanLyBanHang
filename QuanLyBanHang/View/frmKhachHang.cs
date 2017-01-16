@@ -123,11 +123,14 @@ namespace QuanLyBanHang.View
             if (dr == DialogResult.Yes)
             {
                 // Xoa
-                khCtr.Delete(kh);
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
+                if (khCtr.Delete(kh))
+                {
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             frmKhachHang_Load(sender, e);
         }
@@ -138,14 +141,26 @@ namespace QuanLyBanHang.View
             if (flagLuu == 0)
             {
                 // them
-                khCtr.Add(kh);
-                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (khCtr.Add(kh))
+                {
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }               
             }
             else
             {
                 // sua
-                khCtr.Update(kh);
-                MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (khCtr.Update(kh))
+                {
+                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             frmKhachHang_Load(sender, e);
         }

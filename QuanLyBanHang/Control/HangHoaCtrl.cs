@@ -18,27 +18,27 @@ namespace QuanLyBanHang.Control
             return sql.GetDataSet();
         }
 
-        public void Add(HangHoaObj vo)
+        public bool Add(HangHoaObj vo)
         {
-            sql.Add(vo);
+            return sql.Add(vo);
         }
-        public void Update(HangHoaObj vo)
+        public bool Update(HangHoaObj vo)
         {
-            sql.Update(vo);
+            return sql.Update(vo);
         }
-        public void Delete(HangHoaObj vo)
+        public bool Delete(HangHoaObj vo)
         {
-            sql.Delete(vo);
-        }
-
-        public void DelAllFrom3()
-        {
-            sql.DelAllFrom3();
+            return sql.Delete(vo);
         }
 
-        public void CLeanUpDatabase()
+        public bool DelAllFrom3()
         {
-            sql.CleanUpDatabase();
+            return sql.DelAllFrom3();
+        }
+
+        public bool CLeanUpDatabase()
+        {
+            return sql.CleanUpDatabase();
         }
     }
 }

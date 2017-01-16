@@ -9,24 +9,29 @@ using QuanLyBanHang.Object;
 
 namespace QuanLyBanHang.Control
 {
-    public class KhachHangCtrl
+    public class ChiTietCtrl
     {
-        private KhachHangMod sql = new KhachHangMod();
+        private ChiTietMod sql = new ChiTietMod();
 
         public DataSet GetDataSet()
         {
             return sql.GetDataSet();
         }
 
-        public bool Add(KhachHangObj vo)
+        public DataSet GetDataSet(string maHD)
+        {
+            return sql.GetDataSet(maHD);
+        }
+
+        public bool Add(ChiTietObj vo)
         {
             return sql.Add(vo);
         }
-        public bool Update(KhachHangObj vo)
+        public bool Update(ChiTietObj vo)
         {
             return sql.Update(vo);
         }
-        public bool Delete(KhachHangObj vo)
+        public bool Delete(ChiTietObj vo)
         {
             return sql.Delete(vo);
         }

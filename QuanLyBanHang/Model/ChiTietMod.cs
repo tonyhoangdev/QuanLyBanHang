@@ -8,49 +8,57 @@ using QuanLyBanHang.Object;
 
 namespace QuanLyBanHang.Model
 {
-    public class HangHoaMod
+    public class ChiTietMod
     {
         private SQLiteDatabaseAccess da = new SQLiteDatabaseAccess();
 
         public DataSet GetDataSet()
         {
-            string str = "select * from tb_HangHoa";
+            string str = "select ct.MaHD, hh.TenHang, ct.SoLuong, ct.DonGia from tb_CTHD ct, tb_HangHoa hh where ct.MaHH = hh.MaHH";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
             return da.excuteQuery(cmd);
         }
 
-        public bool Add(HangHoaObj vo)
+        public DataSet GetDataSet(string maHD)
         {
-            string str = "insert into tb_HangHoa (MaHH, TenHang, SoLuong, DonGia) values (@MaHH, @TenHang, @SoLuong, @DonGia)";
+            string str = "select ct.MaHD, hh.TenHang, ct.SoLuong, ct.DonGia from tb_CTHD ct, tb_HangHoa hh where ct.MaHH = hh.MaHH and ct.MaHD = @MaHD";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
+            cmd.Parameters.Add("@MaHD", SqlDbType.Text).Value = maHD;
+            return da.excuteQuery(cmd);
+        }
+
+        public bool Add(ChiTietObj vo)
+        {
+            string str = "insert into tb_CTHD (MaHD, MaHH, SoLuong, DonGia) values (@MaHD, @MaHH, @SoLuong, @DonGia)";
+            SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
+            cmd.Parameters.Add("@MaHD", SqlDbType.Text).Value = vo.MaHD;
             cmd.Parameters.Add("@MaHH", SqlDbType.Text).Value = vo.MaHH;
-            cmd.Parameters.Add("@TenHang", SqlDbType.Text).Value = vo.TenHang;
             cmd.Parameters.Add("@SoLuong", SqlDbType.Int).Value = vo.SoLuong;
             cmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = vo.DonGia;
             return da.executeNonQuery(cmd);
         }
 
         // Update du lieu
-        public bool Update(HangHoaObj vo)
+        public bool Update(ChiTietObj vo)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("update tb_HangHoa ");
-            sb.Append("set TenHang = @TenHang, SoLuong = @SoLuong, DonGia = @DonGia ");
-            sb.Append("where MaHH = @MaHH");
+            sb.Append("update tb_CTHD ");
+            sb.Append("set MaHH = @MaHH, SoLuong = @SoLuong, DonGia = @DonGia ");
+            sb.Append("where MaHD = @MaHD");
             SQLiteCommand cmd = new SQLiteCommand(sb.ToString(), da.Conn);
+            cmd.Parameters.Add("@MaHD", SqlDbType.Text).Value = vo.MaHD;
             cmd.Parameters.Add("@MaHH", SqlDbType.Text).Value = vo.MaHH;
-            cmd.Parameters.Add("@TenHang", SqlDbType.Text).Value = vo.TenHang;
             cmd.Parameters.Add("@SoLuong", SqlDbType.Text).Value = vo.SoLuong;
             cmd.Parameters.Add("@DonGia", SqlDbType.Text).Value = vo.DonGia;
             return da.executeNonQuery(cmd);
         }
 
         // Delete du lieu
-        public bool Delete(HangHoaObj vo)
+        public bool Delete(ChiTietObj vo)
         {
-            string str = "delete from tb_HangHoa where MaHH = @MaHH";
+            string str = "delete from tb_CTHD where MaHD = @MaHD";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
-            cmd.Parameters.Add("@MaHH", SqlDbType.Text).Value = vo.MaHH;
+            cmd.Parameters.Add("@MaHD", SqlDbType.Text).Value = vo.MaHD;
             return da.executeNonQuery(cmd);
         }
 

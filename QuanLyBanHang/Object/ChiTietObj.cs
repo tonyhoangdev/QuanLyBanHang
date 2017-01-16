@@ -2,7 +2,7 @@
 
 namespace QuanLyBanHang.Object
 {
-    public class CTHDObj
+    public class ChiTietObj
     {
         #region Fields
         string _maHD;
