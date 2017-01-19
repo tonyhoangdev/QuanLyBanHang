@@ -19,7 +19,7 @@ namespace QuanLyBanHang.View
             InitializeComponent();
         }
 
-        HoaDonCtrl hdCtrl = new HoaDonCtrl();        
+        HoaDonCtrl hdCtrl = new HoaDonCtrl();
         HoaDonObj nv = new HoaDonObj();
         DataSet dsChiTiet = new DataSet();
         DataSet dsHoaDon = new DataSet();
@@ -34,6 +34,7 @@ namespace QuanLyBanHang.View
             dgvHoaDon.DataSource = dsHoaDon.Tables[0].DefaultView;
             bindingHoaDon();
             DisEnl(false);
+            txtNgayLap.Enabled = false;
         }
 
         void bindingHoaDon()
@@ -44,8 +45,8 @@ namespace QuanLyBanHang.View
             txtNgayLap.DataBindings.Add("Text", dgvHoaDon.DataSource, "NgayLap");
             txtMaNV.DataBindings.Clear();
             txtMaNV.DataBindings.Add("Text", dgvHoaDon.DataSource, "TenNV");
-            txtMaKH.DataBindings.Clear();
-            txtMaKH.DataBindings.Add("Text", dgvHoaDon.DataSource, "TenKH");
+            cbKH.DataBindings.Clear();
+            cbKH.DataBindings.Add("Text", dgvHoaDon.DataSource, "TenKH");
         }
 
         void bindingChiTiet()
@@ -60,16 +61,15 @@ namespace QuanLyBanHang.View
 
         private void DisEnl(bool e)
         {
-            //btnNhapHang.Enabled = !e;
-            //btnThem.Enabled = !e;
-            //btnXoa.Enabled = !e;
-            //btnSua.Enabled = !e;
-            //btnLuu.Enabled = e;
-            //btnHuy.Enabled = e;
-            //txtMa.Enabled = e;
-            //txtTen.Enabled = e;
-            //txtDonGia.Enabled = e;
-            //cbSoLuong.Enabled = e;
+            txtMaHD.Enabled = e;
+            txtMaNV.Enabled = e;
+            cbKH.Enabled = e;
+            btnTaoMoiHD.Enabled = !e;
+            btnXoaHD.Enabled = !e;
+            btnInHD.Enabled = !e;
+            btnLuuHD.Enabled = e;
+            btnHuy.Enabled = e;
+            btnCham.Enabled = e;
         }
 
         private void GanData(HangHoaObj obj)
@@ -89,10 +89,26 @@ namespace QuanLyBanHang.View
 
         void ClearData()
         {
-            //txtMa.Text = "HH00";
-            //txtTen.Text = "";
-            //LoadControl();
-            //txtDonGia.Text = "0";
+            txtMaHD.Text = "HD00";
+            txtMaNV.Text = "";
+            txtNgayLap.Text = DateTime.Now.Date.ToShortDateString();
+            cbKH.Text = "";
+        }
+
+        private void LoadcbKhachHang()
+        {
+            KhachHangCtrl khCtrl = new KhachHangCtrl();
+            cbKH.DataSource = khCtrl.GetDataSet().Tables[0].DefaultView;
+            cbKH.DisplayMember = "TenKH";
+            cbKH.ValueMember = "MaKH";
+        }
+
+        private void LoadcbChiTietHang()
+        {
+            HangHoaCtrl hhCtrl = new HangHoaCtrl();
+            cbChiTietHang.DataSource = hhCtrl.GetDataSet().Tables[0].DefaultView;
+            cbChiTietHang.DisplayMember = "TenHang";
+            cbChiTietHang.ValueMember = "MaHH";
         }
 
         private void txtMaHD_TextChanged(object sender, EventArgs e)
@@ -101,12 +117,52 @@ namespace QuanLyBanHang.View
             {
                 dsChiTiet = chiTietCtrl.GetDataSet(txtMaHD.Text.Trim());
                 dgvChiTiet.DataSource = dsChiTiet.Tables[0].DefaultView;
-                bindingChiTiet();
             }
             catch (Exception)
             {
-                
+                dgvChiTiet.DataSource = null;
             }
+            bindingChiTiet();
         }
+
+
+        private void dgvChiTiet_DataSourceChanged(object sender, EventArgs e)
+        {
+            bindingChiTiet();
+        }
+
+        private void btnTaoMoiHD_Click(object sender, EventArgs e)
+        {
+            DisEnl(true);
+            LoadcbKhachHang();
+            LoadcbChiTietHang();
+            ClearData();
+        }
+
+        private void btnXoaHD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInHD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLuuHD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCham_Click(object sender, EventArgs e)
+        {
+            txtNgayLap.Enabled = true;
+        }
+
     }
 }
