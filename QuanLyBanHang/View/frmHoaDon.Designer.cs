@@ -147,7 +147,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(243, 36);
+            this.label3.Location = new System.Drawing.Point(235, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 2;
@@ -280,6 +280,7 @@
             this.dgvChiTiet.Size = new System.Drawing.Size(426, 203);
             this.dgvChiTiet.TabIndex = 0;
             this.dgvChiTiet.DataSourceChanged += new System.EventHandler(this.dgvChiTiet_DataSourceChanged);
+            this.dgvChiTiet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTiet_CellClick);
             // 
             // btnBotCT
             // 
@@ -290,6 +291,7 @@
             this.btnBotCT.TabIndex = 7;
             this.btnBotCT.Text = "Bớt";
             this.btnBotCT.UseVisualStyleBackColor = true;
+            this.btnBotCT.Click += new System.EventHandler(this.btnBotCT_Click);
             // 
             // txtSoLuong
             // 
@@ -298,6 +300,7 @@
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(76, 20);
             this.txtSoLuong.TabIndex = 4;
+            this.txtSoLuong.TextChanged += new System.EventHandler(this.txtSoLuong_TextChanged);
             // 
             // btnThemCT
             // 
@@ -308,6 +311,7 @@
             this.btnThemCT.TabIndex = 7;
             this.btnThemCT.Text = "Thêm";
             this.btnThemCT.UseVisualStyleBackColor = true;
+            this.btnThemCT.Click += new System.EventHandler(this.btnThemCT_Click);
             // 
             // cbChiTietHang
             // 
@@ -317,6 +321,7 @@
             this.cbChiTietHang.Name = "cbChiTietHang";
             this.cbChiTietHang.Size = new System.Drawing.Size(319, 21);
             this.cbChiTietHang.TabIndex = 3;
+            this.cbChiTietHang.SelectedIndexChanged += new System.EventHandler(this.cbChiTietHang_SelectedIndexChanged);
             // 
             // txtDonGia
             // 
@@ -345,8 +350,9 @@
             this.lblThanhTien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblThanhTien.Location = new System.Drawing.Point(93, 88);
             this.lblThanhTien.Name = "lblThanhTien";
-            this.lblThanhTien.Size = new System.Drawing.Size(0, 20);
+            this.lblThanhTien.Size = new System.Drawing.Size(19, 20);
             this.lblThanhTien.TabIndex = 1;
+            this.lblThanhTien.Text = "0";
             // 
             // label10
             // 

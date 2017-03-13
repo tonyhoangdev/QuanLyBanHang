@@ -19,7 +19,7 @@ namespace QuanLyBanHang.Model
             return da.excuteQuery(cmd);
         }
 
-        public bool Add(HoaDonObj vo)   
+        public bool Add(HoaDonObj vo)
         {
             string str = "insert into tb_HoaDon (MaHD, NgayLap, MaNV, MaKH) values (@MaHD, @NgayLap, @MaNV, @MaKH)";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);

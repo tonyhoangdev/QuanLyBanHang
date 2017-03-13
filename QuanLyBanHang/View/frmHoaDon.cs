@@ -20,12 +20,14 @@ namespace QuanLyBanHang.View
         }
 
         HoaDonCtrl hdCtrl = new HoaDonCtrl();
-        HoaDonObj nv = new HoaDonObj();
+        HoaDonObj hd = new HoaDonObj();
         DataSet dsChiTiet = new DataSet();
         DataSet dsHoaDon = new DataSet();
 
         ChiTietCtrl chiTietCtrl = new ChiTietCtrl();
         ChiTietObj chiTietObj = new ChiTietObj();
+
+        DataTable dtChiTiet = new DataTable();
         int flagLuu = 0;
 
         private void frmHoaDon_Load(object sender, EventArgs e)
@@ -70,14 +72,17 @@ namespace QuanLyBanHang.View
             btnLuuHD.Enabled = e;
             btnHuy.Enabled = e;
             btnCham.Enabled = e;
+
+            btnThemCT.Enabled = e;
+            btnBotCT.Enabled = e;
         }
 
-        private void GanData(HangHoaObj obj)
+        private void GanData(HoaDonObj obj)
         {
-            //obj.MaHH = txtMa.Text.Trim();
-            //obj.TenHang = txtTen.Text.Trim();
-            //obj.SoLuong = int.Parse(cbSoLuong.Text.Trim());
-            //obj.DonGia = int.Parse(txtDonGia.Text.Trim());
+            obj.MaHD = txtMaHD.Text.Trim();
+            obj.MaNV = txtMaNV.Text.Trim();
+            obj.NgayLap = Convert.ToDateTime(txtNgayLap.Text.Trim()).ToString("yy-MM-dd");
+            obj.MaKH = cbKH.SelectedValue.ToString();
         }
 
         void LoadControl()
@@ -92,7 +97,7 @@ namespace QuanLyBanHang.View
             txtMaHD.Text = "HD00";
             txtMaNV.Text = "";
             txtNgayLap.Text = DateTime.Now.Date.ToShortDateString();
-            cbKH.Text = "";
+            cbKH.SelectedIndex = 0;
         }
 
         private void LoadcbKhachHang()
@@ -137,26 +142,75 @@ namespace QuanLyBanHang.View
             LoadcbKhachHang();
             LoadcbChiTietHang();
             ClearData();
+            cbKH.SelectedIndex = 0;
+
+            dtChiTiet.Rows.Clear();
+            dtChiTiet.Columns.Add("MaHD");
+            dtChiTiet.Columns.Add("TenHang");
+            dtChiTiet.Columns.Add("SoLuong");
+            dtChiTiet.Columns.Add("DonGia");
+            dtChiTiet.Columns.Add("ThanhTien");
         }
 
         private void btnXoaHD_Click(object sender, EventArgs e)
         {
-
+            GanData(hd);
+            DialogResult dr = MessageBox.Show("Bạn có muốn xóa - " + hd.MaHD, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                // Xoa
+                if (hdCtrl.Delete(hd))
+                {
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+            }
+            frmHoaDon_Load(sender, e);
         }
 
         private void btnInHD_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Chưa support");
         }
 
         private void btnLuuHD_Click(object sender, EventArgs e)
         {
+            GanData(hd);
 
+            // them
+            if (hdCtrl.Add(hd))
+            {
+                // Them chi tiet
+                if (chiTietCtrl.Add(dtChiTiet))
+                {
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Thêm chi tiết chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chưa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            frmHoaDon_Load(sender, e);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-
+            DialogResult dr = MessageBox.Show("Bạn có muốn hủy!", "xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dr == DialogResult.OK)
+            {
+                frmHoaDon_Load(sender, e);
+            }
         }
 
         private void btnCham_Click(object sender, EventArgs e)
@@ -164,5 +218,100 @@ namespace QuanLyBanHang.View
             txtNgayLap.Enabled = true;
         }
 
+        private bool checkSame(DataTable dt, string maHH)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (dt.Rows[i][1].ToString() == maHH)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        void UpdateSL(DataTable dt, string maHH, int soLuong)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (dt.Rows[i][1].ToString() == maHH)
+                {
+                    int soLuongMoi = int.Parse(dt.Rows[i][2].ToString()) + soLuong;
+                    dt.Rows[i][2] = soLuongMoi;
+                    double donGia = double.Parse(dt.Rows[i][3].ToString());
+                    dt.Rows[i][4] = donGia * soLuongMoi;
+                    break;
+                }
+            }
+        }
+
+
+        private void btnThemCT_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMaHD.Text))
+            {
+                string maHH = cbChiTietHang.SelectedValue.ToString();
+                int soLuong;
+                int.TryParse(txtSoLuong.Text, out soLuong);
+                if (!checkSame(dtChiTiet, maHH))
+                {
+                    DataRow dr = dtChiTiet.NewRow();
+                    dr[0] = txtMaHD.Text.Trim();
+                    dr[1] = cbChiTietHang.SelectedValue.ToString();
+                    dr[2] = txtSoLuong.Text;
+                    dr[3] = txtDonGia.Text;
+                    dr[4] = (double.Parse(txtDonGia.Text)) * soLuong;
+                    dtChiTiet.Rows.Add(dr);
+                    dgvChiTiet.DataSource = dtChiTiet;
+                    txtSoLuong.Text = "1";
+                }
+                else
+                {
+                    UpdateSL(dtChiTiet, maHH, soLuong);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Không được để trống Mã HD", "Lỗi");
+                txtMaHD.Focus();
+            }
+        }
+
+        private void cbChiTietHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbChiTietHang.SelectedIndex < 0) return;
+
+            DataTable dt = new DataTable();
+            dt = chiTietCtrl.GetDataSetHH(cbChiTietHang.SelectedValue.ToString());
+
+            if (dt.Rows.Count > 0)
+            {
+                txtDonGia.Text = dt.Rows[0][2].ToString();
+
+                lblThanhTien.Text = (double.Parse(txtDonGia.Text) * int.Parse(txtSoLuong.Text)).ToString();
+            }
+
+        }
+
+        private void txtSoLuong_TextChanged(object sender, EventArgs e)
+        {
+            int soLuong;
+            int.TryParse(txtSoLuong.Text, out soLuong);
+            lblThanhTien.Text = (double.Parse(txtDonGia.Text) * soLuong).ToString();
+        }
+
+        private void btnBotCT_Click(object sender, EventArgs e)
+        {
+            dtChiTiet.Rows.RemoveAt(cellClick);
+            dgvChiTiet.DataSource = dtChiTiet;
+        }
+
+        int cellClick = -1;
+        private void dgvChiTiet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cellClick = e.RowIndex;
+        }
     }
 }

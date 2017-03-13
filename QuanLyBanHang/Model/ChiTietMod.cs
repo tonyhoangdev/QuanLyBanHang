@@ -14,17 +14,26 @@ namespace QuanLyBanHang.Model
 
         public DataSet GetDataSet()
         {
-            string str = "select ct.MaHD, hh.TenHang, ct.SoLuong, ct.DonGia from tb_CTHD ct, tb_HangHoa hh where ct.MaHH = hh.MaHH";
+            string str = "select ct.MaHD, hh.TenHang, ct.DonGia, ct.SoLuong, from tb_CTHD ct, tb_HangHoa hh where ct.MaHH = hh.MaHH";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
             return da.excuteQuery(cmd);
         }
 
         public DataSet GetDataSet(string maHD)
         {
-            string str = "select ct.MaHD, hh.TenHang, ct.SoLuong, ct.DonGia from tb_CTHD ct, tb_HangHoa hh where ct.MaHH = hh.MaHH and ct.MaHD = @MaHD";
+            string str = "select ct.MaHD, hh.TenHang, ct.DonGia, ct.SoLuong from tb_CTHD ct, tb_HangHoa hh where ct.MaHH = hh.MaHH and ct.MaHD = @MaHD";
             SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
             cmd.Parameters.Add("@MaHD", SqlDbType.Text).Value = maHD;
             return da.excuteQuery(cmd);
+        }
+
+
+        public DataTable GetDataSetHH(string maHH)
+        {
+            string str = "select * from tb_HangHoa where MaHH = @MaHH";
+            SQLiteCommand cmd = new SQLiteCommand(str, da.Conn);
+            cmd.Parameters.Add("@MaHH", SqlDbType.Text).Value = maHH;
+            return da.excuteQuery(cmd).Tables[0];
         }
 
         public bool Add(ChiTietObj vo)
@@ -36,6 +45,28 @@ namespace QuanLyBanHang.Model
             cmd.Parameters.Add("@SoLuong", SqlDbType.Int).Value = vo.SoLuong;
             cmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = vo.DonGia;
             return da.executeNonQuery(cmd);
+        }
+        public bool Add(DataTable dt)
+        {
+            bool flag = true;
+            try
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ChiTietObj vo = new ChiTietObj();
+                    vo.MaHD = dt.Rows[i][0].ToString();
+                    vo.MaHH = dt.Rows[i][1].ToString();
+                    vo.SoLuong = int.Parse(dt.Rows[i][2].ToString());
+                    vo.DonGia = int.Parse(dt.Rows[i][3].ToString());
+
+                    flag = Add(vo);
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return flag;
         }
 
         // Update du lieu

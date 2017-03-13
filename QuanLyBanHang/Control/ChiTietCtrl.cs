@@ -23,9 +23,18 @@ namespace QuanLyBanHang.Control
             return sql.GetDataSet(maHD);
         }
 
+        public DataTable GetDataSetHH(string maHH)
+        {
+            return sql.GetDataSetHH(maHH);
+        }
+
         public bool Add(ChiTietObj vo)
         {
             return sql.Add(vo);
+        }
+        public bool Add(DataTable dt)
+        {
+            return sql.Add(dt);
         }
         public bool Update(ChiTietObj vo)
         {

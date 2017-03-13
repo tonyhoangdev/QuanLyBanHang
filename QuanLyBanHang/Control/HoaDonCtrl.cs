@@ -22,6 +22,7 @@ namespace QuanLyBanHang.Control
         {
             return sql.Add(vo);
         }
+
         public bool Update(HoaDonObj vo)
         {
             return sql.Update(vo);
